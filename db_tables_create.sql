@@ -1,5 +1,5 @@
-create table CATEGORY(
-	CATEGORY_ID  smallserial primary key,
+create table CATEGORY (
+	CATEGORY_ID smallserial primary key,
 	CATEGORY_NAME varchar(50) not null unique,
-	CATEGORY_VISIBILE  varchar(1) check (CATEGORY_VISIBILE in ('Y', 'N')) default 'Y'
+	CATEGORY_AVAILABLE char(1) not null check (CATEGORY_AVAILABLE in ('Y', 'N')) default 'Y'
 );
