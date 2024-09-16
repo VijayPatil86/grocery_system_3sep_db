@@ -8,7 +8,7 @@ create table DAIRY_PRODUCT (
 	DAIRY_PRODUCT_ID smallserial primary key,
 	DAIRY_PRODUCT_NAME varchar(50) not null unique,
 	DAIRY_PRODUCT_AVAILABLE char(1) check (DAIRY_PRODUCT_AVAILABLE in ('Y', 'N')) default 'Y',
-	CATEGORY_ID int,
+	CATEGORY_ID int not null,
 	constraint "fk_CATEGORY_ID" foreign key (CATEGORY_ID) references CATEGORY(CATEGORY_ID) on delete cascade
 );
 
