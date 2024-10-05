@@ -56,6 +56,7 @@ create table BANK_ACCOUNT (
 	ACCOUNT_ID smallserial primary key,
 	BUSINESS_NAME varchar(50) not null,
 	BANK_NAME varchar(50) not null,
+	BRANCH_NAME varchar(50) not null,
 	ACCOUNT_NUMBER varchar(50) not null unique,
 	IFSC_CODE varchar(15) not null,
 	BALANCE numeric(10, 2)
