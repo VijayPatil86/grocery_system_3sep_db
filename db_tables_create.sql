@@ -52,6 +52,15 @@ create table MILK_BRAND_INVENTORY (
 	constraint "fk_MILK_BRAND_ID" foreign key(MILK_BRAND_ID) references MILK_BRAND(MILK_BRAND_ID) on delete cascade
 );
 
+create table BANK_ACCOUNT (
+	ACCOUNT_ID smallserial primary key,
+	BUSINESS_NAME varchar(50) not null,
+	BANK_NAME varchar(50) not null,
+	ACCOUNT_NUMBER varchar(50) not null unique,
+	IFSC_CODE varchar(15) not null,
+	BALANCE numeric(10, 2)
+);
+
 create table BAKERY_PRODUCT (
 	BAKERY_PRODUCT_ID smallserial primary key,
 	BAKERY_PRODUCT_NAME varchar(50) not null unique,
