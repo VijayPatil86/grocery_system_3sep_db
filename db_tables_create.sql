@@ -41,6 +41,9 @@ create table MILK_BRAND_SELL_DETAILS(
 	constraint "fk_MILK_BRAND_ID" foreign key(MILK_BRAND_ID) references MILK_BRAND(MILK_BRAND_ID) on delete cascade
 );
 
+alter table MILK_BRAND_SELL_DETAILS add column ORDER_NUMBER varchar(30);
+alter table MILK_BRAND_SELL_DETAILS alter column ORDER_NUMBER set not null;
+
 create table MILK_BRAND_INVENTORY (
 	INVENTORY_ID smallserial primary key,
 	MILK_BRAND_ID int not null,
