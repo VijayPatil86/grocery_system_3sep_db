@@ -43,6 +43,16 @@ create table MILK_BRAND_SELL_DETAILS(
 
 alter table MILK_BRAND_SELL_DETAILS add column ORDER_NUMBER varchar(30);
 alter table MILK_BRAND_SELL_DETAILS alter column ORDER_NUMBER set not null;
+alter table MILK_BRAND_SELL_DETAILS add column REMARK varchar(50);
+
+create table UPI_DETAILS (
+	UPI_RECORD_ID smallserial primary key,
+	UPI_ID varchar(30) not null unique
+);
+
+alter table MILK_BRAND_SELL_DETAILS
+add column UPI_RECORD_ID int,
+add constraint fk_UPI_RECORD_ID foreign key(UPI_RECORD_ID) references UPI_DETAILS(UPI_RECORD_ID);
 
 create table MILK_BRAND_INVENTORY (
 	INVENTORY_ID smallserial primary key,
