@@ -75,14 +75,12 @@ create table PAYMENT_TRANSACTION(
 	ORDER_NUMBER varchar(30) not null,
 	PAYMENT_METHOD varchar(30) not null,
 	PAYMENT_STATUS varchar(30) not null,
-	CUSTOMER_BANK_TXN_ID varchar(30) not null,
+	CUSTOMER_BANK_TXN_ID varchar(30),
 	CREATED_AT timestamp
 );
 
 alter table PAYMENT_TRANSACTION add column UPI_RECORD_ID int,
 add constraint fk_UPI_RECORD_ID foreign key(UPI_RECORD_ID) references UPI_DETAILS(UPI_RECORD_ID);
-alter table PAYMENT_TRANSACTION add column MILK_BRAND_SELL_DETAIL_ID int not null,
-add constraint fk_MILK_BRAND_SELL_DETAIL_ID foreign key(MILK_BRAND_SELL_DETAIL_ID) references MILK_BRAND_SELL_DETAILS(DETAIL_ID)
 alter table PAYMENT_TRANSACTION add column REMARK varchar(30);
 
 create table BAKERY_PRODUCT (
