@@ -60,7 +60,7 @@ create table MILK_BRAND_INVENTORY (
 	constraint "fk_MILK_BRAND_ID" foreign key(MILK_BRAND_ID) references MILK_BRAND(MILK_BRAND_ID) on delete cascade
 );
 
-create table BANK_ACCOUNT (
+create table BANK_ACCOUNT_INFO (
 	ACCOUNT_ID smallserial primary key,
 	BUSINESS_NAME varchar(50) not null,
 	BANK_NAME varchar(50) not null,
@@ -82,6 +82,10 @@ create table PAYMENT_TRANSACTION(
 alter table PAYMENT_TRANSACTION add column UPI_RECORD_ID int,
 add constraint fk_UPI_RECORD_ID foreign key(UPI_RECORD_ID) references UPI_DETAILS(UPI_RECORD_ID);
 alter table PAYMENT_TRANSACTION add column REMARK varchar(30);
+alter table PAYMENT_TRANSACTION add column PAYMENT_AMOUNT decimal(8, 2) not null;
+alter table PAYMENT_TRANSACTION drop constraint fk_upi_record_id;
+alter table PAYMENT_TRANSACTION add constraint fk_upi_record_id
+foreign key(UPI_RECORD_ID) references UPI_DETAILS(UPI_RECORD_ID) on delete cascade;
 
 create table BAKERY_PRODUCT (
 	BAKERY_PRODUCT_ID smallserial primary key,
