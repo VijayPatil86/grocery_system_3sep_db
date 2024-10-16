@@ -87,6 +87,14 @@ alter table PAYMENT_TRANSACTION drop constraint fk_upi_record_id;
 alter table PAYMENT_TRANSACTION add constraint fk_upi_record_id
 foreign key(UPI_RECORD_ID) references UPI_DETAILS(UPI_RECORD_ID) on delete cascade;
 
+create table UPI_NPCL_TRANSACTIONS(
+	TRANSACTION_ID smallserial primary key,
+	UPI_ID varchar(30) not null,
+	AMOUNT decimal(8, 2) not null,
+	PAYER_TRANSACTION_ID int not null,
+	PAYER_TRANSACTION_TIMESTAMP timestamp not null
+);
+
 create table BAKERY_PRODUCT (
 	BAKERY_PRODUCT_ID smallserial primary key,
 	BAKERY_PRODUCT_NAME varchar(50) not null unique,
