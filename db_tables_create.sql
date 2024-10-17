@@ -87,6 +87,25 @@ alter table PAYMENT_TRANSACTION drop constraint fk_upi_record_id;
 alter table PAYMENT_TRANSACTION add constraint fk_upi_record_id
 foreign key(UPI_RECORD_ID) references UPI_DETAILS(UPI_RECORD_ID) on delete cascade;
 
+/*create table BAKERY_PRODUCT (
+	BAKERY_PRODUCT_ID smallserial primary key,
+	BAKERY_PRODUCT_NAME varchar(50) not null unique,
+	BAKERY_PRODUCT_AVAILABLE char(1) check (BAKERY_PRODUCT_AVAILABLE in ('Y', 'N')) default 'Y',
+	CATEGORY_ID int,
+	constraint "fk_CATEGORY_ID" foreign key (CATEGORY_ID) references CATEGORY(CATEGORY_ID) on delete cascade
+);*/
+
+CREATE DATABASE upi_npcl
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_India.1252'
+    LC_CTYPE = 'English_India.1252'
+    LOCALE_PROVIDER = 'libc'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
 create table UPI_NPCL_TRANSACTIONS(
 	TRANSACTION_ID smallserial primary key,
 	UPI_ID varchar(30) not null,
@@ -95,10 +114,3 @@ create table UPI_NPCL_TRANSACTIONS(
 	PAYER_TRANSACTION_TIMESTAMP timestamp not null
 );
 
-create table BAKERY_PRODUCT (
-	BAKERY_PRODUCT_ID smallserial primary key,
-	BAKERY_PRODUCT_NAME varchar(50) not null unique,
-	BAKERY_PRODUCT_AVAILABLE char(1) check (BAKERY_PRODUCT_AVAILABLE in ('Y', 'N')) default 'Y',
-	CATEGORY_ID int,
-	constraint "fk_CATEGORY_ID" foreign key (CATEGORY_ID) references CATEGORY(CATEGORY_ID) on delete cascade
-);
