@@ -79,13 +79,9 @@ create table PAYMENT_TRANSACTION(
 	CREATED_AT timestamp
 );
 
-alter table PAYMENT_TRANSACTION add column UPI_RECORD_ID int,
-add constraint fk_UPI_RECORD_ID foreign key(UPI_RECORD_ID) references UPI_DETAILS(UPI_RECORD_ID);
+alter table PAYMENT_TRANSACTION add column UPI_ADDRESS varchar(30) not null;
 alter table PAYMENT_TRANSACTION add column REMARK varchar(30);
 alter table PAYMENT_TRANSACTION add column PAYMENT_AMOUNT decimal(8, 2) not null;
-alter table PAYMENT_TRANSACTION drop constraint fk_upi_record_id;
-alter table PAYMENT_TRANSACTION add constraint fk_upi_record_id
-foreign key(UPI_RECORD_ID) references UPI_DETAILS(UPI_RECORD_ID) on delete cascade;
 
 /*create table BAKERY_PRODUCT (
 	BAKERY_PRODUCT_ID smallserial primary key,
@@ -108,7 +104,7 @@ CREATE DATABASE upi_npcl
 
 create table UPI_NPCL_TRANSACTIONS(
 	TRANSACTION_ID smallserial primary key,
-	UPI_ID varchar(30) not null,
+	UPI_ADDRESS varchar(30) not null,
 	AMOUNT decimal(8, 2) not null,
 	PAYER_TRANSACTION_ID int not null,
 	PAYER_TRANSACTION_TIMESTAMP timestamp not null
