@@ -120,3 +120,12 @@ CREATE DATABASE BANK_ICICI
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
+
+create table HEAD_OFFICE_INFO(
+	HEAD_OFFICE_ID smallserial primary key,
+	HEAD_OFFICE_NAME varchar(30) not null unique,
+	HEAD_OFFICE_ADDRESS varchar(30) not null,
+	HEAD_OFFICE_IFSC_CODE varchar(20) not null unique
+);
+insert into HEAD_OFFICE_INFO(HEAD_OFFICE_NAME, HEAD_OFFICE_ADDRESS, HEAD_OFFICE_IFSC_CODE) values
+('ICICI H.O.', 'S.B.Road, Pune', 'ICIC0000418');
