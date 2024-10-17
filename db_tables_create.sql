@@ -91,7 +91,7 @@ alter table PAYMENT_TRANSACTION add column PAYMENT_AMOUNT decimal(8, 2) not null
 	constraint "fk_CATEGORY_ID" foreign key (CATEGORY_ID) references CATEGORY(CATEGORY_ID) on delete cascade
 );*/
 
-CREATE DATABASE upi_npcl
+CREATE DATABASE UPI_NPCL
     WITH
     OWNER = postgres
     ENCODING = 'UTF8'
@@ -110,3 +110,13 @@ create table UPI_NPCL_TRANSACTIONS(
 	PAYER_TRANSACTION_TIMESTAMP timestamp not null
 );
 
+CREATE DATABASE BANK_ICICI
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_India.1252'
+    LC_CTYPE = 'English_India.1252'
+    LOCALE_PROVIDER = 'libc'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
